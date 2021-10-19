@@ -1,3 +1,13 @@
+<?php
+  $host='localhost';
+  $user='root';
+  $db='webcoursera';
+  $connection=new mysqli($host,$user,'',$db);
+  $cmd="SELECT * FROM users";
+  $result=mysqli_query($connection,$cmd);
+  $count=mysqli_num_rows($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +24,7 @@
     <!-- Navigation Bar-->
     <nav class="navbar">
       <div class="navbar__container">
-        <a href="index.html" id="navbar__logo">WebCoursera</a>
+        <a href="index.php" id="navbar__logo">WebCoursera</a>
         <div class="navbar__toggle" id="mobile-menu">
           <span class="bar"></span> <span class="bar"></span>
           <span class="bar"></span>
@@ -23,22 +33,23 @@
           <li class="navbar__item">
             <div class=" navbar__links search_wrap search_wrap_3">
               <div class="search_box">
-                <input type="text" class="input" placeholder="Type to Search">
+                <input type="text" class="input" placeholder="Typ to Search">
                 <div class="btn btn_common">
                   <i class="fas fa-search"></i>
                 </div>
               </div>
             </div>
           </li>
-          <li class="navbar__item"><a href="index.html" class="navbar__links" id="home-page">Home</a></li>
+          <li class="navbar__item"><a href="index.php" class="navbar__links" id="home-page">Home</a></li>
           <li class="navbar__item"><a href="html/categories.html" class="navbar__links" id="about-page">Categories</a></li>
-          <li class="navbar__btn"><a href="html/login.html" class="button" id="login">Login</a></li>
-          <li class="navbar__btn"><a href="html/register.html" class="button button1" id="register">Register</a></li>
+          <li class="navbar__btn"><a href="html/login.php" class="button" id="login">Login</a></li>
+          <li class="navbar__btn"><a href="html/register.php" class="button button1" id="register">Register</a></li>
         </ul>
       </div>
     </nav>
 
     <!-- Services Section -->
+    <div class="main-body">
     <div class="services" id="services">
       <br>
       <br>
@@ -64,7 +75,16 @@
         </div>
       </div>
     </div>
-
+    <div class="right-pane">
+      <h2>Registered Users : <?php echo $count ?></h2>
+    <div style="height: 20px;"></div>
+    <ol>
+      <?php foreach($result as $user){?>
+        <li><?php echo $user['email'] ?></li>
+        <?php } ?>
+      </ol>
+      </div>
+</div>
     <!-- Footer Section -->
     <div class="footer__container">
       <div class="footer__links">
@@ -89,7 +109,7 @@
       <section class="social__media">
         <div class="social__media--wrap">
           <div class="footer__logo">
-            <a href="index.html">WebCoursera</a>
+            <a href="index.php">WebCoursera</a>
           </div>
           <p class="website__rights">© WebCoursera 2021. All rights reserved</p>
           <div class="social__icons">

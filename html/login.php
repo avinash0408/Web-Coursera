@@ -1,3 +1,26 @@
+<?php
+session_start();
+    $host='localhost';
+    $user='root';
+    $db='webcoursera';
+    $er='';
+    if(isset($_POST['submit'])){
+        $connection=new mysqli($host,$user,'',$db);
+        $email=$_POST['email'];
+        $check_mail="SELECT * FROM users WHERE email='$email'";
+        $result_mail=mysqli_query($connection,$check_mail);
+        $arr=mysqli_fetch_array($result_mail);
+
+        if($arr && password_verify($_POST['password'],$arr['enc_password'])){
+          $_SESSION['arr']=$arr;
+        header("Location:http://localhost/Web-Coursera/html/landing.php");
+        }
+        else{
+          $er='Invalid Login..Please try again..!';
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +37,7 @@
     <!-- Navigation Bar-->
     <nav class="navbar">
       <div class="navbar__container">
-      <a href="../index.html" id="navbar__logo">WebCoursera</a>
+      <a href="../index.php" id="navbar__logo">WebCoursera</a>
       <div class="navbar__toggle" id="mobile-menu">
           <span class="bar"></span> <span class="bar"></span>
           <span class="bar"></span>
@@ -30,25 +53,30 @@
                   </div>
               </div>
           </li>
-          <li class="navbar__item"><a href="../index.html" class="navbar__links" id="home-page">Home</a></li>
+          <li class="navbar__item"><a href="../index.php" class="navbar__links" id="home-page">Home</a></li>
           <li class="navbar__item"><a href="categories.html" class="navbar__links" id="about-page">Categories</a></li>
-          <li class="navbar__btn"><a href="login.html" class="button" id="login">Login</a></li>
-          <li class="navbar__btn"><a href="register.html" class="button button1" id="register">Register</a></li>
+          <li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>
+          <li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>
       </ul>
       </div>
   </nav>
 
       <div class="form-div">
-        <form action="/" method="post" class="form">
+        <form action="login.php" method="post" class="form">
        <h1>Login</h1>
        <div class="inputs">
        <input type="email" name="email" id="" placeholder="E-mail address" class="user_input" required>
        <input type="password" name="password" id="" placeholder="Password" class="user_input" required>
+       <small class="error" style="color:red">
+       <?php
+            if($er) echo $er;
+       ?> 
+       </small>
        </div>
 
-       <input type="submit" value="Login">
+       <input type="submit" value="Login" name="submit">
        <div class="links">
-           <a href="login.html">Forgot Password?</a>
+           <a href="login.php">Forgot Password?</a>
        </div>
        <div class="soc_head">
            <div class="left"></div>
@@ -86,7 +114,7 @@
     <section class="social__media">
       <div class="social__media--wrap">
         <div class="footer__logo">
-          <a href="../index.html">WebCoursera</a>
+          <a href="../index.php">WebCoursera</a>
         </div>
         <p class="website__rights">© WebCoursera 2021. All rights reserved</p>
         <div class="social__icons">

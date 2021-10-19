@@ -9,6 +9,7 @@ body{
   background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%) !important;
 }
 
+
 /* Navigation Bar */
 .navbar {
   height: 75px;
@@ -135,7 +136,7 @@ body{
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 99;
-    height: ;
+    height: 100%;
     font-size: 1.6rem;
   }
   #navbar__logo {
@@ -297,6 +298,25 @@ body{
 }
 
 /* Services Section */
+.main-body{
+  display: flex;
+}
+
+.right-pane{
+  width: 20%;
+  color: wheat;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+.right-pane hr{
+  margin-left: 0;
+  margin-right: 0;
+}
+.right-pane ol{
+  padding: 5px;
+}
 .services {
   background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
   display: flex;
@@ -304,7 +324,9 @@ body{
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 80%;
 }
+
 .services h1 {
   background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
   background-size: 100%;
