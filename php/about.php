@@ -29,9 +29,17 @@
                 </div>
             </li>
             <li class="navbar__item"><a href="../index.php" class="navbar__links" id="home-page">Home</a></li>
-            <li class="navbar__item"><a href="categories.html" class="navbar__links" id="about-page">Categories</a></li>
-            <li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>
-            <li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>
+            <li class="navbar__item"><a href="categories.php" class="navbar__links" id="about-page">Categories</a></li>
+            <?php
+              session_start();
+            if(isset($_SESSION['arr'])){ 
+              echo '<li class="navbar__btn"><a href="logout.php" class="button button1" id="logout">Logout</a></li>';
+            }
+            else{
+              echo '<li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>';
+              echo '<li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>';
+            }
+          ?>
         </ul>
         </div>
     </nav>
@@ -84,7 +92,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img src="../images/team-2.jpg" height="330" alt="team" />
+                        <img src="../images/team-3.jpeg" height="330" alt="team" />
                         <div class="inner">
                             <div class="info">
                                 <h5>Samudrala Avinash</h5>
@@ -111,19 +119,19 @@
         <div class="footer__links">
           <div class="footer__link--wrapper">
             <div class="footer__link--items">
-              <a href="terms.html">Terms</a>
+              <a href="terms.php">Terms</a>
             </div>
             <div class="footer__link--items">
-              <a href="policy.html">Privacy Policy</a>
+              <a href="policy.php">Privacy Policy</a>
             </div>
             <div class="footer__link--items">
-              <a href="support.html">Help and Support</a>
+              <a href="support.php">Help and Support</a>
             </div>
             <div class="footer__link--items">
-              <a href="about.html">About Us</a>
+              <a href="about.php">About Us</a>
             </div>
             <div class="footer__link--items">
-              <a href="contact.html">Contact Us</a>
+              <a href="contact.php">Contact Us</a>
             </div>
           </div>
         </div>

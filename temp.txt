@@ -1,0 +1,43 @@
+await fetch("http://localhost/WebCoursera/php/db_update.php", {
+                    method : "POST",
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body : JSON.stringify(obj) 
+                });
+
+var res = fetch('http://localhost/WebCoursera/php/db_update.php').then(function (response) {
+                        return response.text();
+                    }).then(function (html) {
+                        var parser = new DOMParser();
+                        var doc = parser.parseFromString(html, 'text/html');
+                        console.log(doc);
+                        console.log(parser);
+
+                    }).catch(function (err) {
+                        // There was an error
+                        console.warn('Something went wrong.', err);
+                    });
+
+                console.log(res);
+                
+$cmd = "INSERT INTO `user_courses` (`user_id`, `course_id`) VALUES (7, 8);";
+    $sql=$connection->prepare($cmd);
+    $sql->execute();
+    $sql->close();
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: 'http://localhost/WebCoursera/php/db_update.php',
+                    dataType: 'json',
+                    data: {functionname: 'add', arguments: [input_class.id,checkbox_status[input_class.id]]},
+
+                    success: function (obj, textstatus) {
+                                if( !('error' in obj) ) {
+                                    yourVariable = obj.result;
+                                }
+                                else {
+                                    console.log(obj.error);
+                                }
+                            }
+                });

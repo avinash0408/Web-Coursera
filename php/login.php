@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
     $host='localhost';
     $user='root';
     $db='webcoursera';
@@ -13,14 +13,19 @@ session_start();
 
         if($arr && password_verify($_POST['password'],$arr['enc_password'])){
           $_SESSION['arr']=$arr;
-        header("Location:http://localhost/Web-Coursera/html/landing.php");
-        }
+          if(isset($_SESSION['redirect'])){
+            $url = $_SESSION['redirect_url'];
+            header("Location:".urldecode($url));
+          }
+          else{
+            header("Location:http://localhost/WebCoursera/php/landing.php");
+          }
+         }
         else{
           $er='Invalid Login..Please try again..!';
         }
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -54,40 +59,50 @@ session_start();
               </div>
           </li>
           <li class="navbar__item"><a href="../index.php" class="navbar__links" id="home-page">Home</a></li>
-          <li class="navbar__item"><a href="categories.html" class="navbar__links" id="about-page">Categories</a></li>
-          <li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>
-          <li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>
+          <li class="navbar__item"><a href="categories.php" class="navbar__links" id="about-page">Categories</a></li>
+          <li class="navbar__btn"><a href="/WebCoursera/php/login.php" class="button" id="login">Login</a></li>
+          <li class="navbar__btn"><a href="/WebCoursera/php/register.php" class="button button1" id="register">Register</a></li>
       </ul>
       </div>
   </nav>
-
+  <?php
+    if(isset($_SESSION['redirect'])){
+          if($_SESSION['redirect'] == 1){
+            echo "<br><h1 class='error' style='color:red; text-align:center'>\n";
+            echo "Please Login to Enroll to the course";
+            echo "</h1>";
+          }
+        }
+  ?>
       <div class="form-div">
         <form action="login.php" method="post" class="form">
-       <h1>Login</h1>
-       <div class="inputs">
-       <input type="email" name="email" id="" placeholder="E-mail address" class="user_input" required>
-       <input type="password" name="password" id="" placeholder="Password" class="user_input" required>
-       <small class="error" style="color:red">
-       <?php
-            if($er) echo $er;
-       ?> 
-       </small>
-       </div>
+        <h1>Login</h1>
+        <div class="inputs">
+        <input type="email" name="email" id="" placeholder="E-mail address" class="user_input" required>
+        <input type="password" name="password" id="" placeholder="Password" class="user_input" required>
+        <small class="error" style="color:red">
+        <?php
+              if($er) echo $er;
+        ?> 
+        </small>
+        </div>
 
-       <input type="submit" value="Login" name="submit">
-       <div class="links">
-           <a href="login.php">Forgot Password?</a>
-       </div>
-       <div class="soc_head">
-           <div class="left"></div>
-           <div class="mid">Login with</div>
-           <div class="right"></div>
-       </div>
-       <div class="soc_media">
-        <a href="#" class="fab fa-facebook"></a> 
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-google"></a>
-       </div>
+        <input type="submit" value="Login" name="submit">
+        <div class="links">
+            <a href="login.php">Forgot Password?</a>
+        </div>
+        <div class="soc_head">
+            <div class="left"></div>
+            <div class="mid">Login with</div>
+            <div class="right"></div>
+        </div>
+        <div class="soc_media">
+          <a href="#" class="fab fa-facebook"></a> 
+          <a href="#" class="fab fa-twitter"></a>
+          <a href="#" class="fab fa-google"></a>
+        </div>
+        <p style="float:left">Don't Have an Account?</p>
+        <a href="/WebCoursera/php/register.php" style="float:right;text-decoration:none; font-weight:50; color:black">Register</a>
         </form>
     </div>
 <!-- Footer Section -->
@@ -95,19 +110,19 @@ session_start();
     <div class="footer__links">
       <div class="footer__link--wrapper">
         <div class="footer__link--items">
-          <a href="terms.html">Terms</a>
+          <a href="terms.php">Terms</a>
         </div>
         <div class="footer__link--items">
-          <a href="policy.html">Privacy Policy</a>
+          <a href="policy.php">Privacy Policy</a>
         </div>
         <div class="footer__link--items">
-          <a href="support.html">Help and Support</a>
+          <a href="support.php">Help and Support</a>
         </div>
         <div class="footer__link--items">
-          <a href="about.html">About Us</a>
+          <a href="about.php">About Us</a>
         </div>
         <div class="footer__link--items">
-          <a href="contact.html">Contact Us</a>
+          <a href="contact.php">Contact Us</a>
         </div>
       </div>
     </div>

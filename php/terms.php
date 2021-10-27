@@ -34,17 +34,26 @@
               </div>
             </li>
             <li class="navbar__item"><a href="../index.php" class="navbar__links" id="home-page">Home</a></li>
-            <li class="navbar__item"><a href="categories.html" class="navbar__links" id="about-page">Categories</a></li>
-            <li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>
-            <li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>
+            <li class="navbar__item"><a href="categories.php" class="navbar__links" id="about-page">Categories</a></li>
+            <?php
+              session_start();
+            if(isset($_SESSION['arr'])){ 
+              echo '<li class="navbar__btn"><a href="logout.php" class="button button1" id="logout">Logout</a></li>';
+            }
+            else{
+              echo '<li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>';
+              echo '<li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>';
+            }
+          ?>
           </ul>
         </div>
       </nav>
    
-    <div class="terms">
-        <h2 style="text-align: center; margin-bottom: 4rem;">Terms & Conditions</h2>
-        <h3>Thank you for using WebCoursera!</h3>
-        <p>WebCoursera offers products and services provided by WebCoursera, Inc., our subsidiaries, and our international branches
+    <div class="terms" style="box-shadow: 0 0 1px 3px #0bf5d5;">
+        <h2 style="text-align: center; margin-bottom: 4rem;color:red">Terms & Conditions</h2>
+        <h3 style="text-align: center;">Thank you for using WebCoursera!</h3>
+        <br>
+        <p style="padding:2px;color:grey">WebCoursera offers products and services provided by WebCoursera, Inc., our subsidiaries, and our international branches
         ("WebCoursera," "us," "we," or "our"). These Terms of Use ("Terms") govern your use of our website, apps, and other
         products and services ("Services"). As some of our Services may be software that is downloaded to your computer, phone,
         tablet, or other device, you agree that we may automatically update this software, and that these Terms will apply to
@@ -53,6 +62,7 @@
         <br>
 
         <h3>Using WebCoursera!</h3>
+        <br>
         <p>You may use our Services only if you can form a binding contract with WebCoursera, and only in compliance with these Terms
         and all applicable laws. When you create your WebCoursera account, and subsequently when you use certain features, you must
         provide us with accurate and complete information, and you agree to update your information to keep it accurate and
@@ -61,6 +71,7 @@
         <br>
 
         <h3>Our License to You!</h3>
+        <br>
         <p>Subject to these Terms and our policies (including the Acceptable Use Policy, Honor Code, course-specific eligibility
         requirements, and other terms), we grant you a limited, personal, non-exclusive, non-transferable, and revocable license
         to use our Services. You may download content from our Services only for your personal, non-commercial use, unless you
@@ -72,6 +83,7 @@
         <br>
 
         <h3>Changes to Content Offerings</h3>
+        <br>
         <p>WebCoursera offers courses and content ("Content Offerings") from universities and other providers ("Content Providers").
         While we seek to provide world-class Content Offerings from our Content Providers, unexpected events do occur. WebCoursera
         reserves the right to cancel, interrupt, reschedule , or modify any Content Offerings, or change the point value or
@@ -81,6 +93,7 @@
         <br>
 
         <h3>How WebCoursera and Others May Use User Content</h3>
+        <br>
         <p>To the extent that you provide User Content, you grant WebCoursera a fully-transferable, royalty-free, perpetual,
         sublicensable, non-exclusive, worldwide license to copy, distribute, modify, create derivative works based on, publicly
         perform, publicly display, and otherwise use the User Content. This license includes granting WebCoursera the right to
@@ -95,26 +108,26 @@
         <div class="footer__links">
           <div class="footer__link--wrapper">
             <div class="footer__link--items">
-              <a href="terms.html">Terms</a>
+              <a href="terms.php">Terms</a>
             </div>
             <div class="footer__link--items">
-              <a href="policy.html">Privacy Policy</a>
+              <a href="policy.php">Privacy Policy</a>
             </div>
             <div class="footer__link--items">
-              <a href="support.html">Help and Support</a>
+              <a href="support.php">Help and Support</a>
             </div>
             <div class="footer__link--items">
-              <a href="about.html">About Us</a>
+              <a href="about.php">About Us</a>
             </div>
             <div class="footer__link--items">
-              <a href="contact.html">Contact Us</a>
+              <a href="contact.php">Contact Us</a>
             </div>
           </div>
         </div>
         <section class="social__media">
           <div class="social__media--wrap">
             <div class="footer__logo">
-              <a href="/" id="footer__logo">WebCoursera</a>
+              <a href="../index.php" id="footer__logo">WebCoursera</a>
             </div>
             <p class="website__rights">© WebCoursera 2021. All rights reserved</p>
             <div class="social__icons">

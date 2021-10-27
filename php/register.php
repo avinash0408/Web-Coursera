@@ -1,27 +1,37 @@
 <?php
+    session_start();
     $host='localhost';
     $user='root';
     $db='webcoursera';
     $flag=0;
+    $confirm_flag = -1;
     $errors=array();
     if(isset($_POST['submit'])){
         $connection=new mysqli($host,$user,'',$db);
         $email=$_POST['email'];
         $username=$_POST['username'];
         $phone=$_POST['phone'];
-        $enc_password=password_hash($_POST['password'],PASSWORD_DEFAULT);
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+        if(strcmp($password, $confirm_password) == 0){
+            $confirm_flag = 0;
+        }
+        else{
+            $confirm_flag = 1;
+        }
+        $enc_password=password_hash($password,PASSWORD_DEFAULT);
         $check_mail="SELECT * FROM users WHERE email='$email'";
         $result_mail=mysqli_query($connection,$check_mail);
         if(mysqli_fetch_array($result_mail)){
             $flag=1;
         }
-        if($flag==0){
-        $com="INSERT INTO users VALUES('$email','$username','$phone','$enc_password')";
+        if($flag == 0 && $confirm_flag == 0){
+        $com="INSERT INTO `users` (`email`, `name`, `mobile`, `enc_password`) VALUES('$email','$username','$phone','$enc_password')";
         $sql=$connection->prepare($com);
         $sql->execute();
         $sql->close();
         $connection->close();
-        header("Location:http://localhost/Web-Coursera/html/login.php");
+        header("Location:http://localhost/WebCoursera/php/login.php");
         }
     }
 ?>
@@ -58,7 +68,7 @@
               </div>
           </li>
           <li class="navbar__item"><a href="../index.php" class="navbar__links" id="home-page">Home</a></li>
-          <li class="navbar__item"><a href="categories.html" class="navbar__links" id="about-page">Categories</a></li>
+          <li class="navbar__item"><a href="categories.php" class="navbar__links" id="about-page">Categories</a></li>
           <li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>
           <li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>
       </ul>
@@ -68,15 +78,21 @@
         <form action="register.php" method="post" class="form">
        <h1>SignUp</h1>
        <div class="inputs">
-       <input type="email" name="email" id="" placeholder="E-mail address" class="user_input" required>
-       <small class="error" style="color:red">
-       <?php
-            if($flag==1) echo "Account already exists with this email..!"
-       ?> 
-       </small>
-       <input type="text" name="username" id="" placeholder="Username" class="user_input" required>
-       <input type="text" name="phone" id="" placeholder="Mobile" class="user_input" required>
-       <input type="password" name="password" id="" placeholder="Password" class="user_input" required>
+        <input type="email" name="email" id="" placeholder="Enter your Email Address" class="user_input" required>
+        <small class="error" style="color:red">
+        <?php
+                if($flag==1) echo "Account already exists with this email..!"
+        ?> 
+        </small>
+        <input type="text" name="username" id="" placeholder="Enter your Name" class="user_input" required>
+        <input type="text" name="phone" id="" placeholder="Enter your Phone Number" class="user_input" required>
+        <input type="password" name="password" id="" placeholder="Enter a Strong Password" class="user_input" required>
+        <input type="password" name="confirm_password" id="" placeholder="Confirm your Password" class="user_input" required>
+        <small class="error" style="color:red">
+        <?php
+                if($confirm_flag==1) echo "Enter the same password in the Confirm Password section"
+        ?> 
+        </small>
        </div>
 
        <input type="submit" value="Register" name="submit">
@@ -91,6 +107,8 @@
         <a href="#" class="fab fa-twitter"></a>
         <a href="#" class="fab fa-google"></a>
        </div>
+        <p style="float:left">Already had an account?</p>
+        <a href="/WebCoursera/php/login.php" style="float:right;text-decoration:none; font-weight:50; color:black;">Login</a>
         </form>
     </div>
     <!-- Footer Section -->
@@ -98,19 +116,19 @@
         <div class="footer__links">
         <div class="footer__link--wrapper">
             <div class="footer__link--items">
-            <a href="terms.html">Terms</a>
+            <a href="terms.php">Terms</a>
             </div>
             <div class="footer__link--items">
-            <a href="policy.html">Privacy Policy</a>
+            <a href="policy.php">Privacy Policy</a>
             </div>
             <div class="footer__link--items">
-            <a href="support.html">Help and Support</a>
+            <a href="support.php">Help and Support</a>
             </div>
             <div class="footer__link--items">
-            <a href="about.html">About Us</a>
+            <a href="about.php">About Us</a>
             </div>
             <div class="footer__link--items">
-            <a href="contact.html">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
             </div>
         </div>
         </div>

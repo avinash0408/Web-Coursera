@@ -14,9 +14,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WebCoursera</title>
-    <link rel="icon" type="image/png" href="images/nitc.png"/>
-    <link rel="stylesheet" href="css/home.css" />
+    <title>Categories</title>
+    <link rel="icon" type="image/png" href="../images/nitc.png"/>
+    <link rel="stylesheet" href="../css/home.css" />
     <script src="https://kit.fontawesome.com/d8c4acb3b9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
       integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous"/>
@@ -25,7 +25,7 @@
     <!-- Navigation Bar-->
     <nav class="navbar">
       <div class="navbar__container">
-        <a href="index.php" id="navbar__logo">WebCoursera</a>
+        <a href="../index.php" id="navbar__logo">WebCoursera</a>
         <div class="navbar__toggle" id="mobile-menu">
           <span class="bar"></span> <span class="bar"></span>
           <span class="bar"></span>
@@ -41,15 +41,15 @@
               </div>
             </div>
           </li>
-          <li class="navbar__item"><a href="index.php" class="navbar__links" id="home-page">Home</a></li>
-          <li class="navbar__item"><a href="php/categories.php" class="navbar__links" id="about-page">Categories</a></li>
+          <li class="navbar__item"><a href="../index.php" class="navbar__links" id="home-page">Home</a></li>
+          <li class="navbar__item"><a href="categories.php" class="navbar__links" id="about-page">Categories</a></li>
           <?php
             if(isset($_SESSION['arr'])){ 
-              echo '<li class="navbar__btn"><a href="php/logout.php" class="button button1" id="logout">Logout</a></li>';
+              echo '<li class="navbar__btn"><a href="logout.php" class="button button1" id="logout">Logout</a></li>';
             }
             else{
-              echo '<li class="navbar__btn"><a href="php/login.php" class="button" id="login">Login</a></li>';
-              echo '<li class="navbar__btn"><a href="php/register.php" class="button button1" id="register">Register</a></li>';
+              echo '<li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>\n';
+              echo '<li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>\n';
             }
           ?>
         </ul>
@@ -59,10 +59,6 @@
     <!-- Services Section -->
     <div class="main-body">
       <div class="services" id="services">
-          <br>
-          <br>
-          <h1>Courses Offered</h1>
-          <br>
           <br>
           <div class="services__wrapper" id = "services_wrapper">
           
@@ -116,6 +112,23 @@
         </div>
       </section>
     </div>
+    <script>
+      function showCourse(enrolled_courses) {
+        // Add ID to services
+        console.log('Entered here');
+        // console.log(courses);
+        services = document.getElementById("services_wrapper");
+        // services.innerHTML = "";
+        for(course in enrolled_courses) {
+          console.log(enrolled_courses[course]);
+          services.insertAdjacentHTML("beforeend", `
+            <div class = "services__card">
+            <img src="images/${enrolled_courses[course].name}.png" height="250px" width="275px"><br><a href = '/Webcoursera/php/course.php?course=${enrolled_courses[course].name}'><button class="enroll_button" id="${enrolled_courses[course].id}">Go to Course</button></a>
+            </div>
+          `)
+        }
+      }
+    </script>
     <?php
       
       $cmd = "SELECT * FROM courses";
@@ -137,7 +150,7 @@
       echo json_encode($courses); 
       echo "');</script>";
     ?>
-	<script src = "js/home.js"></script>
-    <script src="js/app.js"></script>
+	<script src = "../js/home.js"></script>
+    <script src="../js/app.js"></script>
   </body>
 </html>

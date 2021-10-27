@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Contact Us</title>
+        <title>Help and Support</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="../images/nitc.png"/>
         <script src="https://kit.fontawesome.com/d8c4acb3b9.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="../css/contact.css">
+        <link rel="stylesheet" type="text/css" href="../css/support.css">
         <link rel="stylesheet" type="text/css" href="../css/home.css">
     </head>
 
@@ -32,61 +33,57 @@
                     </div>
                 </li>
                 <li class="navbar__item"><a href="../index.php" class="navbar__links" id="home-page">Home</a></li>
-                <li class="navbar__item"><a href="categories.html" class="navbar__links" id="about-page">Categories</a></li>
-                <li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>
-                <li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>
+                <li class="navbar__item"><a href="categories.php" class="navbar__links" id="about-page">Categories</a></li>
+                <?php
+              session_start();
+            if(isset($_SESSION['arr'])){ 
+              echo '<li class="navbar__btn"><a href="logout.php" class="button button1" id="logout">Logout</a></li>';
+            }
+            else{
+              echo '<li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>';
+              echo '<li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>';
+            }
+          ?>
             </ul>
             </div>
         </nav>
 
         <section class="contact">
-            <div class="content">
-                <h2>Contact Us</h2><br>
-            </div>
-            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.1796099684184!2d75.931447212893!3d11.321579091952978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba642fd50000001%3A0xbe8a77db953bda6c!2sNIT%20Calicut!5e0!3m2!1sen!2sin!4v1585373261153!5m2!1sen!2sin" width="65%" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             <div class="container">
-                <div class="contactInfo">
-                    <div class="box">
-                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="text">
-                            <h3>Address</h3>
-                            <p>National Institute of Technology Calicut,<br>
-                                NIT Campus P.O 673 601,<br>
-                                Kozhikode, India</p>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="icon"><i class="fas fa-phone-alt"></i></div>
-                        <div class="text">
-                            <h3>Phone</h3>
-                            <p>+91 63758 93720</p>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="icon"><i class="fas fa-envelope"></i></div>
-                        <div class="text">
-                            <h3>Email</h3>
-                            <p>support@webcoursera.com</p>
-                        </div>
-                    </div>
-                </div>
                 <div class="contactForm">
                     <form>
-                        <h2>Send Message</h2><br>
+                        <div class="content">
+                            <h2>Enter your Query</h2><br>
+                        </div>
                         <div class="inputBox">
                             <input type="text" name="" required="required">
                             <span>&nbsp;Full Name</span>
                         </div>
                         <div class="inputBox">
-                            <input type="text" name="" required="required">
+                            <input type="email" name="" required="required">
                             <span>&nbsp;Email</span>
+                        </div>
+                        <div class="inputBox">
+                            <input type="text" name="" required="required">
+                            <span>&nbsp;Subject</span>
                         </div>
                         <div class="inputBox">
                             <textarea required="required"></textarea>
                             <span>&nbsp;Type your Message...</span>
                         </div>
                         <div class="inputBox">
-                            <input type="submit" name="" value="Send">
+                            <div class="drag-area">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <header>Attach Screenshot if any</header>
+                                <button>Browse File</button>
+                                <input type="file" hidden>
+                            </div>
+                        </div>
+                        
+                        <!-- <script src="script.js"></script> -->
+
+                        <div class="inputBox">
+                            <input type="submit" name="" value="Send Message">
                         </div>
                     </form>
                 </div>
@@ -97,19 +94,19 @@
         <div class="footer__links">
         <div class="footer__link--wrapper">
             <div class="footer__link--items">
-            <a href="terms.html">Terms</a>
+            <a href="terms.php">Terms</a>
             </div>
             <div class="footer__link--items">
-            <a href="policy.html">Privacy Policy</a>
+            <a href="policy.php">Privacy Policy</a>
             </div>
             <div class="footer__link--items">
-            <a href="support.html">Help and Support</a>
+            <a href="support.php">Help and Support</a>
             </div>
             <div class="footer__link--items">
-            <a href="about.html">About Us</a>
+            <a href="about.php">About Us</a>
             </div>
             <div class="footer__link--items">
-            <a href="contact.html">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
             </div>
         </div>
         </div>

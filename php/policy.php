@@ -35,17 +35,26 @@
               </div>
             </li>
             <li class="navbar__item"><a href="../index.php" class="navbar__links" id="home-page">Home</a></li>
-            <li class="navbar__item"><a href="categories.html" class="navbar__links" id="about-page">Categories</a></li>
-            <li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>
-            <li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>
+            <li class="navbar__item"><a href="categories.php" class="navbar__links" id="about-page">Categories</a></li>
+            <?php
+              session_start();
+            if(isset($_SESSION['arr'])){ 
+              echo '<li class="navbar__btn"><a href="logout.php" class="button button1" id="logout">Logout</a></li>';
+            }
+            else{
+              echo '<li class="navbar__btn"><a href="login.php" class="button" id="login">Login</a></li>';
+              echo '<li class="navbar__btn"><a href="register.php" class="button button1" id="register">Register</a></li>';
+            }
+          ?>
           </ul>
         </div>
       </nav>
 
-    <div class="terms">
-        <h2 style="text-align: center; margin-bottom: 4rem;">Privacy Policy</h2>
+    <div class="terms" style="box-shadow: 0 0 1px 3px #0bf5d5;">
+        <h2 style="text-align: center; margin-bottom: 4rem;color:red">Privacy Policy</h2>
 
         <h3>Key Information!</h3>
+        <br>
         <ul>
             <li><p>WebCoursera, Inc. is the data controller of the personal information we collect about you (i.e., the entity that determines
             the means and purposes of collecting, using, and disclosing the personal information), unless you are part of a degree,
@@ -67,6 +76,7 @@
         <br>
 
         <h3>Purpose and who we are</h3>
+        <br>
         <p>The purpose of this Privacy Notice is to describe how WebCoursera, Inc., our subsidiaries, and our international branches,
         ("WebCoursera," "us," "we," or "our") collects, uses, and shares information about you through our online interfaces (e.g.,
         websites and mobile applications) owned and controlled by us. Please read this Privacy Notice carefully to understand what we do. If
@@ -81,6 +91,7 @@
         <br>
 
         <h3>Information relating to your use of our Site</h3>
+        <br>
         <p>When users come to our Site, we may track, collect, and aggregate information indicating, among other things, which
         pages of our Site were visited, the order in which they were visited, when they were visited, and which hyperlinks were
         clicked. We also collect information from the URLs from which you linked to our Site. Collecting such information may
@@ -92,6 +103,7 @@
         <br>
 
         <h3>Changes to Content Offerings</h3>
+        <br>
         <p>WebCoursera offers courses and content ("Content Offerings") from universities and other providers ("Content
             Providers").
             While we seek to provide world-class Content Offerings from our Content Providers, unexpected events do
@@ -105,6 +117,7 @@
         <br>
 
         <h3>Information relating to your use of our Site</h3>
+        <br>
         <p>We use information relating to your use of the Site to build higher quality, more useful Services by performing
         statistical analyses of the collective characteristics and behavior of our users, and by measuring demographics and
         interests regarding specific areas of our Site. We may also use this information to ensure the security of our Services
@@ -118,26 +131,26 @@
         <div class="footer__links">
           <div class="footer__link--wrapper">
             <div class="footer__link--items">
-              <a href="terms.html">Terms</a>
+              <a href="terms.php">Terms</a>
             </div>
             <div class="footer__link--items">
-              <a href="policy.html">Privacy Policy</a>
+              <a href="policy.php">Privacy Policy</a>
             </div>
             <div class="footer__link--items">
-              <a href="support.html">Help and Support</a>
+              <a href="support.php">Help and Support</a>
             </div>
             <div class="footer__link--items">
-              <a href="about.html">About Us</a>
+              <a href="about.php">About Us</a>
             </div>
             <div class="footer__link--items">
-              <a href="contact.html">Contact Us</a>
+              <a href="contact.php">Contact Us</a>
             </div>
           </div>
         </div>
         <section class="social__media">
           <div class="social__media--wrap">
             <div class="footer__logo">
-              <a href="/" id="footer__logo">WebCoursera</a>
+              <a href="../index.php" id="footer__logo">WebCoursera</a>
             </div>
             <p class="website__rights">© WebCoursera 2021. All rights reserved</p>
             <div class="social__icons">

@@ -9,6 +9,47 @@ body{
   background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%) !important;
 }
 
+.enroll_button{
+  float: left;
+  margin-left: 25%;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 15px 20px;
+  font-size: large;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: #1abc9c;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.enroll_button:hover{
+  background: #3498db;
+}
+
+.go_to_course_button{
+  float: left;
+  margin-left: 25%;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 15px 20px;
+  font-size: large;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: #28a745;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.go_to_course_button:hover{
+  background: #3498db;
+}
 
 /* Navigation Bar */
 .navbar {
@@ -96,6 +137,25 @@ body{
   background: #1abc9c;
   color: #fff;
   transition: all 0.3s ease;
+}
+
+.button2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  height: 100%;
+  /* width: 100%; */
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: #e74c3c;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.button2:hover{
+  background: #3498db;
 }
 .button1{
   background: #e74c3c;
@@ -343,8 +403,9 @@ body{
 }
 .services__card {
   margin: 20px;
-  height: 250px;
-  width: 275px;
+  /* margin-bottom: 45px; */
+  /* height: 250px; */
+  /* width: 275px; */
   border-radius: 4px;
   display: flex;
   flex-direction: column;
