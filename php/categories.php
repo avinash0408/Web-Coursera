@@ -34,7 +34,7 @@
           <li class="navbar__item">
             <div class=" navbar__links search_wrap search_wrap_3">
               <div class="search_box">
-                <input type="text" class="input" placeholder="Type to Search" id = 'input' onchange = "search()">
+                <input type="text" class="input" placeholder="Type to Search" id = 'input' oninput = "search()">
                 <div class="btn btn_common">
                   <i class="fas fa-search"></i>
                 </div>
@@ -80,19 +80,19 @@
       <div class="footer__links">
         <div class="footer__link--wrapper">
           <div class="footer__link--items">
-            <a href="php/terms.php">Terms</a>
+            <a href="terms.php">Terms</a>
           </div>
           <div class="footer__link--items">
-            <a href="php/policy.php">Privacy Policy</a>
+            <a href="policy.php">Privacy Policy</a>
           </div>
           <div class="footer__link--items">
-            <a href="php/support.php">Help and Support</a>
+            <a href="support.php">Help and Support</a>
           </div>
           <div class="footer__link--items">
-            <a href="php/about.php">About Us</a>
+            <a href="about.php">About Us</a>
           </div>
           <div class="footer__link--items">
-            <a href="php/contact.php">Contact Us</a>
+            <a href="contact.php">Contact Us</a>
           </div>
         </div>
       </div>

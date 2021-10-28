@@ -50,7 +50,7 @@
         </div>
       </nav>
 
-    <div class="terms" style="box-shadow: 0 0 1px 3px #0bf5d5;">
+    <div class="terms" style="box-shadow: 0 0 1px 3px #0bf5d5;text-align:center">
         <h2 style="text-align: center; margin-bottom: 4rem;color:red">Privacy Policy</h2>
 
         <h3>Key Information!</h3>

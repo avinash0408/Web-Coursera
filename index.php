@@ -34,7 +34,7 @@
           <li class="navbar__item">
             <div class=" navbar__links search_wrap search_wrap_3">
               <div class="search_box">
-                <input type="text" class="input" placeholder="Type to Search" id = 'input' onchange = "search()">
+                <input type="text" class="input" placeholder="Type to Search" id = 'input' oninput = "search()">
                 <div class="btn btn_common">
                   <i class="fas fa-search"></i>
                 </div>
